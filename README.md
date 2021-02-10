@@ -11,3 +11,11 @@
 ### compile protobuf
 
 `python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. calculator.proto`
+
+### run server
+
+`python server.py`
+
+### run client
+
+`python client.py`
