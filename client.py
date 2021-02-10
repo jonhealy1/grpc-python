@@ -1,20 +1,28 @@
 import grpc
-
+import typer
 # import the generated classes
 import calculator_pb2
 import calculator_pb2_grpc
 
-# open a gRPC channel
-channel = grpc.insecure_channel('localhost:50051')
+app = typer.Typer()
 
-# create a stub (client)
-stub = calculator_pb2_grpc.CalculatorStub(channel)
+@app.command()
+def square_root(val: float):
 
-# create a valid request message
-number = calculator_pb2.Number(value=16)
+    # open a gRPC channel
+    channel = grpc.insecure_channel('localhost:50051')
 
-# make the call
-response = stub.SquareRoot(number)
+    # create a stub (client)
+    stub = calculator_pb2_grpc.CalculatorStub(channel)
 
-# et voilà
-print(response.value)
+    # create a valid request message
+    number = calculator_pb2.Number(value=val)
+
+    # make the call
+    response = stub.SquareRoot(number)
+
+    # et voilà
+    print(response.value)
+
+if __name__ == "__main__":
+    app()

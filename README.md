@@ -16,6 +16,6 @@
 
 `python server.py`
 
-### run client
+### run client with value to find square root of
 
-`python client.py`
+`python client.py 6.1`
